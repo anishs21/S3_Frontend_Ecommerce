@@ -15,8 +15,6 @@ phases:
     commands:
       - echo Deploying to S3...
       - aws s3 sync dist/ s3://mernecommerce-frontend --delete
-      - echo Creating CloudFront cache invalidation...
-      - aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
 
 artifacts:
   files:
