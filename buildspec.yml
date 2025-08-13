@@ -7,5 +7,5 @@ phases:
     commands: []
   post_build:
     commands:
-      - echo Deploying dist folder to S3...
-      - aws s3 sync dist/ s3://mernecommerce-frontend --delete
+      - echo Deploying files to S3...
+      - aws s3 sync . s3://mernecommerce-frontend --delete
