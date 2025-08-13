@@ -2,16 +2,10 @@ version: 0.2
 
 phases:
   install:
-    commands:
-      - npm install
+    commands: []
   build:
-    commands:
-      - npm run build
+    commands: []
   post_build:
     commands:
+      - echo Deploying dist folder to S3...
       - aws s3 sync dist/ s3://mernecommerce-frontend --delete
-
-artifacts:
-  files:
-    - '**/*'
-  base-directory: dist
