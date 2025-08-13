@@ -3,13 +3,12 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "No dependencies to install."
+      - npm install
   build:
     commands:
-      - echo "No build step needed."
+      - npm run build
   post_build:
     commands:
-      - echo "Deploying dist/ to S3..."
       - aws s3 sync dist/ s3://mernecommerce-frontend --delete
 
 artifacts:
