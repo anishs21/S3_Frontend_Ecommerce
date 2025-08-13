@@ -2,16 +2,20 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 18
     commands:
-      - echo "Nothing to install"
+      - echo Installing dependencies...
+      - npm install
   build:
     commands:
-      - echo "No build step required - using prebuilt dist folder"
+      - echo Building frontend...
+      - npm run build
   post_build:
     commands:
-      - echo "Deploying to S3..."
+      - echo Deploying to S3...
       - aws s3 sync dist/ s3://mernecommerce-frontend --delete
-      - echo "Creating CloudFront cache invalidation..."
+      - echo Creating CloudFront cache invalidation...
       - aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths "/*"
 
 artifacts:
